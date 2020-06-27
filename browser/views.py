@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.decorators.cache import cache_page
+
 from b2_browser.settings import CF_ROOT
 
 from .b2 import b2ls
