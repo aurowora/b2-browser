@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>B2 Index</title>
+</head>
+<style>
+    table {
+        width: 100%;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+</style>
+<body>
+<table>
+<tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Created (UTC)</th>
+    <th>Size</th>
+    <th>SHA1 Checksum</th>
+</tr>
+
+{% if not is_root %}
+    <tr>
+        <td><a href="/{{ up }}">..</a></td>
+        <td>Directory</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+{% endif %}
+
+{% for fi in files %}
+    <tr>
+    {% if not fi.is_file %}
+        <td><a href="/{{ fi.name }}">{{ fi.friendly_name }}</a></td>
+        <td>Directory</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    {% else %}
+        <td><a href="{{ cf_root }}{{ fi.name }}">{{ fi.friendly_name }}</a></td>
+        <td>{{ fi.type }}</td>
+        <td>{{ fi.time }}</td>
+        <td>{{ fi.size|filesizeformat }}</td>
+        <td>{{ fi.sha1 }}</td>
+    {% endif %}
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
