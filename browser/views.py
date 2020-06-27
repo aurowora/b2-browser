@@ -12,6 +12,7 @@ def strip_slash(p):
     return p
 
 
+@cache_page(60 * 15)
 def ls(request, directory=""):
     d = b2ls(directory)
 
