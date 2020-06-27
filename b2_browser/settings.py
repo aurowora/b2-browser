@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import lzma
+import lz4
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -84,7 +84,7 @@ if not DEBUG:
             "LOCATION": cache_uri,
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
-                "COMPRESSOR": "django_redis.compressors.lzma.LzmaCompressor",
+                "COMPRESSOR": "django_redis.compressors.lz4.Lz4Compressor",
             }
         }
     }
