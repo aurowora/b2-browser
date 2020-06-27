@@ -83,6 +83,7 @@ if not DEBUG:
             "LOCATION": cache_uri,
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                "COMPRESSOR": "django_redis.compressors.lzma.LzmaCompressor",
             }
         }
     }
