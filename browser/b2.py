@@ -52,19 +52,3 @@ def b2ls(path=''):
     cache.set(f'path:{path}', json.dumps(obj), timeout=(60 * 60 * 24))
 
     return obj
-
-
-# Don't pre-cache if DEBUG
-if not DEBUG:
-    print('Precaching root, top levels, and common subs')
-    print('/')
-    r = b2ls()
-
-    for f in r:
-        if not f['is_file']:
-            print(f'/{f["name"]}')
-            d = b2ls(f['name'])
-            for x in d:
-                if not x['is_file']:
-                    print(f'/{x["name"]}')
-                    b2ls(x['name'])
