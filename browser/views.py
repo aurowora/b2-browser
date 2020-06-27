@@ -1,6 +1,5 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.template.loader import get_template
 from b2_browser.settings import CF_ROOT
 
 from .b2 import b2ls
