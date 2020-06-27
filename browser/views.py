@@ -26,5 +26,5 @@ def ls(request, directory=""):
         up = ""
 
     return HttpResponse(
-        content=render(request, "dir.html", context={"files": d, "cf_root": CF_ROOT, "is_root": directory == "", "up": up}),
-        status=200)
+        content=render(request, "dir.html",
+                       context={"files": d, "cf_root": CF_ROOT, "is_root": directory == "", "up": up}), status=200)
