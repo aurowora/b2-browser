@@ -8,7 +8,6 @@ import datetime
 import os
 
 _info = InMemoryAccountInfo()
-
 _api_obj = B2Api(_info)
 _api_obj.authorize_account('production', B2_API_ID, B2_API_KEY)
 
@@ -36,14 +35,17 @@ def b2ls(path=''):
             entry['name'] = f_info.file_name
             entry['friendly_name'] = os.path.basename(os.path.normpath(f_info.file_name))
             entry['size'] = f_info.size
+
             if f_info.content_type is not None:
                 entry['type'] = f_info.content_type.split(";")[0]
             else:
                 entry['type'] = "Unknown"
+
             if f_info.content_sha1 is not None and f_info.content_sha1 != "none":
                 entry['sha1'] = f_info.content_sha1
             else:
                 entry['sha1'] = "Unknown"
+
             if f_info.upload_timestamp is not None:
                 entry['time'] = str(datetime.datetime.utcfromtimestamp(f_info.upload_timestamp / 1000))
 
